@@ -1,21 +1,26 @@
 {
   "name": "summit-panel",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdfranklinaz/summit-panel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tdfranklinaz/summit-panel/issues"
+  },
+  "homepage": "https://github.com/tdfranklinaz/summit-panel#readme",
   "dependencies": {
-    "milligram": "^1.4.1",
-    "vue": "^3.2.36",
-    "vue-router": "^4.0.15"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "node-sass": "^7.0.1",
-    "sass": "^1.52.2",
-    "sass-loader": "^13.0.0",
-    "vite": "^2.9.9"
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0"
   }
 }
