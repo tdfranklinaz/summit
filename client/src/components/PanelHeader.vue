@@ -12,8 +12,8 @@
         </div>
 
         <nav>
-          <RouterLink to="/">System</RouterLink>
-          <RouterLink to="/">Applications</RouterLink>
+          <RouterLink to="/">Dashboard</RouterLink>
+          <RouterLink to="/">Virtual Machines</RouterLink>
           <RouterLink to="/">Settings</RouterLink>
         </nav>
       </div>
@@ -31,7 +31,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0px;
+    padding: 10px 0px 5px 0px;
 
     h1 {
       margin: 0;
@@ -58,6 +58,8 @@
   nav > a {
     margin-left: 5px;
     padding: 15px;
+    color: #fff;
+    //border-bottom: solid 2px #06BD60;
 
     &:last-child {
       padding-right: 0px;

@@ -9,46 +9,90 @@ app.use(cors());
  * information about the host system
  * to be displayed in the user panel
  */
-let currentSystem = [
-  {
-    platform: os.platform(),
-    release: os.release(),
-    arch: os.arch(),
-  }
-]
+function updateCurrentSystem() {
+  // memory
+  let total_mem = os.totalmem();
+  let total_mem_gb = total_mem/1024/1024/1024;
+  let total_mem_clean = total_mem_gb.toFixed(2) + ' GB';
 
-app.get('/system', (req, res) => {
-  res.json(currentSystem);
+  // uptime
+  let uptime = os.uptime();
+  let uptime_d = Math.floor(uptime / (3600*24));
+  let uptime_h = Math.floor(uptime % (3600*24) / 3600);
+  let uptime_m = Math.floor(uptime % 3600 / 60);
+  let uptime_clean = uptime_d + 'd ' + uptime_h + 'h ' + uptime_m + 'm';
+
+  let currentSystem = [
+    {
+      platform: os.platform(),
+      release: os.release(),
+      arch: os.arch(),
+      memory: total_mem_clean,
+      uptime: uptime_clean,
+    }
+  ]
+
+  return currentSystem;
+}
+setInterval(updateCurrentSystem, 60000);
+
+app.get('/', (req, res) => {
+  res.json(updateCurrentSystem());
+});
+
+
+/**
+ * shutdown server
+ */
+function shutdown() {
+  const { exec } = require('child_process');
+  exec('shutdown now', (error, stdout, stderr) => {
+    if(error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if(stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+}
+
+app.post('/shutdown', (req, res) => {
+  console.log('shutdown request');
+
+  //execute command
+  shutdown();
 });
 
 /**
- * events is custom test data used while
- * learning vue lifecycle methods
+ * restart server
  */
-let events = [
-  {
-    id: 1,
-    name: 'some event',
-    category: 'some category',
-    description: 'some description',
-  },
-  {
-    id: 2,
-    name: 'second some event',
-    category: 'second some category',
-    description: 'second some description',
-  }
-];
+ function restart() {
+  const { exec } = require('child_process');
+  exec('shutdown -r now', (error, stdout, stderr) => {
+    if(error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if(stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+}
 
-app.get('/events', (req, res) => {
-  res.send(events);
+app.post('/restart', (req, res) => {
+  console.log('shutdown request');
+
+  //execute command
+  restart();
 });
 
-app.get('/events/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const event = events.find(event => event.id === id);
-  res.send(event);
-});
+
+
 
 /**
  * app.listen starts the server on port

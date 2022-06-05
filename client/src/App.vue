@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, p, a {
 
 // typography
 h1 { color: #fff; }
-a { color: #42b883; }
+a { color: #06BD60; }
 p { color: #66707A; }
 
 // buttons

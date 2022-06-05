@@ -1,12 +1,40 @@
 <script>
   export default {
     name: "System",
-    data() { return { systemInfo: [] }; },
+    data() { 
+      return { 
+        systemInfo: []
+      } 
+    },
 
     mounted() {
-      fetch('http://localhost:4000/system')
+      fetch('http://localhost:4000/')
         .then(response => response.json())
         .then(data => (this.systemInfo = data));
+    },
+
+    methods: {
+      shutdown() {
+        fetch('http://localhost:4000/shutdown', {
+          method: 'POST',
+          body: 'Shutdown request...',
+          headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
+      },
+
+      restart() {
+        fetch('http://localhost:4000/restart', {
+          method: 'POST',
+          body: 'Restart request...',
+          headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
+      }
     }
   }
 </script>
@@ -27,6 +55,8 @@
             <li><p>Platform</p></li>
             <li><p>Release</p></li>
             <li><p>Architecture</p></li>
+            <li><p>Memory</p></li>
+            <li><p>Uptime</p></li>
           </ul>
         </div>
         <div class="column column-67">
@@ -34,6 +64,8 @@
             <li><p>{{ system.platform }}</p></li>
             <li><p>{{ system.release }}</p></li>
             <li><p>{{ system.arch }}</p></li>
+            <li><p>{{ system.memory }}</p></li>
+            <li><p>{{ system.uptime }}</p></li>
           </ul>
         </div>
       </div>
@@ -41,8 +73,8 @@
       <div class="row">
         <div class="column">
           <ul class="si-action">
-            <li><button class="button button-danger">Shut down</button></li>
-            <li><button class="button button-secondary">Restart</button></li>
+            <li><button @click="shutdown" class="button button-danger">Shut down</button></li>
+            <li><button @click="restart" class="button button-secondary">Restart</button></li>
           </ul>
         </div>
       </div>
