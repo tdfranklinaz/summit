@@ -2,19 +2,24 @@ const express = require('express');
 const os = require('node:os');
 const app = express();
 
-
+const cors = require('cors');
+app.use(cors());
 
 /**
  * information about the host system
  * to be displayed in the user panel
  */
-let systemInfo = os.platform() + ' ' + os.arch();
+let currentSystem = [
+  {
+    platform: os.platform(),
+    release: os.release(),
+    arch: os.arch(),
+  }
+]
 
-app.get('/', (req, res) => {
-  res.json(systemInfo);
+app.get('/system', (req, res) => {
+  res.json(currentSystem);
 });
-
-
 
 /**
  * events is custom test data used while
@@ -44,8 +49,6 @@ app.get('/events/:id', (req, res) => {
   const event = events.find(event => event.id === id);
   res.send(event);
 });
-
-
 
 /**
  * app.listen starts the server on port

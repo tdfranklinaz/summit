@@ -21,4 +21,37 @@ h1, h2, h3, h4, h5, p, a {
 // typography
 h1 { color: #fff; }
 a { color: #42b883; }
+p { color: #66707A; }
+
+// buttons
+.button {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.button-danger {
+  background: #F74243;
+  border-color: #F74243;
+  color: #fff;
+
+  &:hover {
+    background: #F74243;
+    border-color: #F74243;
+    color: #fff;
+  }
+}
+
+.button-secondary {
+  background: #2D353D;
+  border-color: #2D353D;
+  color: #66707A;
+
+  &:hover {
+    background: #2D353D;
+    border-color: #2D353D;
+    color: #66707A;
+  }
+}
 </style>
