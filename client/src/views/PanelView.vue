@@ -1,5 +1,6 @@
 <script setup>
   import PanelInfo from '@/components/PanelInfo.vue';
+  import PanelItems from '@/components/PanelItems.vue';
 </script>
 
 <script>
@@ -13,6 +14,7 @@
     methods: {
       updateSysInfo() {
         this.panelInfoKey += 1;
+        console.log('Refreshed panel data...');
       }
     }
   }
@@ -24,6 +26,7 @@
 
       <div class="row row-panel">
         <PanelInfo :key="panelInfoKey" />
+        <PanelItems />
       </div>
 
       <div class="row row-panel">

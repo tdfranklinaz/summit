@@ -1,6 +1,5 @@
 <script>
   export default {
-    name: "System",
     data() { 
       return { 
         systemInfo: []
@@ -98,6 +97,9 @@
       padding-bottom: 10px;
       margin-bottom: 10px;
       border-bottom: solid 1px #2D353D;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: normal;
     }
 
     .row {
@@ -128,12 +130,6 @@
           margin-right: 15px;
         }
       }
-    }
-
-    h3 {
-      font-size: 20px;
-      color: #fff;
-      letter-spacing: normal;
     }
   }
 </style>

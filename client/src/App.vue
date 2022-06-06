@@ -46,12 +46,12 @@ p { color: #66707A; }
 .button-secondary {
   background: #2D353D;
   border-color: #2D353D;
-  color: #66707A;
+  color: #9199a0;
 
   &:hover {
     background: #2D353D;
     border-color: #2D353D;
-    color: #66707A;
+    color: #9199a0;
   }
 }
 </style>
