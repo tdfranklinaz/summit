@@ -85,7 +85,7 @@ app.post('/shutdown', (req, res) => {
 }
 
 app.post('/restart', (req, res) => {
-  console.log('shutdown request');
+  console.log('restart request');
 
   //execute command
   restart();
