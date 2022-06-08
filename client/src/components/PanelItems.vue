@@ -1,7 +1,4 @@
-<script>
-  export default {
-
-  }
+<script setup>
 </script>
 
 <template>
@@ -18,13 +15,27 @@
 
       <div class="row panel-items">
 
+        <div v-for="singleItem in singleItems" class="system-info"></div>
+
         <div class="column column-50 column-item">
-          <div class="panel-col">
-            <p class="item-single-title">
-              <span class="item-desc"><i class="bi-router-fill item-icon"></i>&nbsp;Router</span>
-              <span class="item-status"><i class="bi-reception-4"></i></span>
-            </p>
-          </div>
+          <a href="#">
+            <div class="panel-col">
+              <p class="item-single-title">
+                <span class="item-desc"><i class="bi-router-fill item-icon"></i>&nbsp;Router</span>
+                <span class="item-status"><i class="bi-reception-4"></i></span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="column column-50 column-item">
+          <a href="#">
+            <div class="panel-col panel-col-add">
+              <p class="item-single-title">
+                <span class="item-desc item-add"><i class="bi-plus item-icon"></i>&nbsp;Add</span>
+              </p>
+            </div>
+          </a>
         </div>
 
       </div>
@@ -75,6 +86,11 @@
         margin: 7px 10px;
       }
 
+      .panel-col-add {
+        background: #192024;
+        border: solid 2px #2D353D;
+      }
+
       p.item-single-title {
         color: #fff;
         display: flex;
@@ -84,6 +100,10 @@
         .item-desc {
           display: flex;
           align-items: center;
+        }
+
+        .item-add {
+          color: #66707A;
         }
 
         .item-icon {
